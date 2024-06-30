@@ -1,16 +1,19 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'auth_service.dart';
+import 'spalashscreen.dart';
 
 void main() {
   runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
+  final authService = AuthService();
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'My App',
-      home: HomePage(),
+      home: authService.currentUser != null ? HomePage() : SplashScreen(),
     );
   }
 }
