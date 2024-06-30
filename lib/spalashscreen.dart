@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'dart:async';
 import 'auth_service.dart';
-import 'main.dart'; // Import the file containing the HomePage
+import 'main.dart';
+import 'gender.dart';
+import 'help_selection_page.dart'; // Import the file containing the HomePage
 
 void main() {
   runApp(MyApp());
@@ -18,6 +20,7 @@ class MyApp extends StatelessWidget {
       ),
       home: SplashScreen(),
     );
+    // Remove the extra closing parenthesis
   }
 }
 
@@ -211,7 +214,12 @@ class _LoginScreenState extends State<LoginScreen> {
                         MaterialPageRoute(builder: (context) => HomePage()),
                       );
                     } else {
-                      // Show an error message or handle the case when sign-up fails
+                      Text('Wrong password or SIGN UP');
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => GenderSelectionPage()),
+                      ); // Show an error message or handle the case when sign-up fails
                     }
                   },
                 ),
