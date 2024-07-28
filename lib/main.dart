@@ -1,7 +1,9 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'dart:async';
 import 'package:flutter/material.dart';
-import 'auth_service.dart';
-import 'spalashscreen.dart';
+import 'widgets/auth_service.dart';
+import 'widgets/spalashscreen.dart';
 
 void main() {
   runApp(MyApp());
