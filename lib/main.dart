@@ -4,6 +4,8 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'widgets/auth_service.dart';
 import 'widgets/spalashscreen.dart';
+import 'widgets/setup/Card_view1.dart';
+import 'widgets/setup/Card_view2.dart';
 
 void main() {
   runApp(MyApp());
@@ -102,7 +104,8 @@ class _HomePageState extends State<HomePage> {
                         physics: NeverScrollableScrollPhysics(),
                         itemCount: snapshot.data!.length,
                         itemBuilder: (context, index) {
-                          return ContentCard(content: snapshot.data![index]);
+                          return ContentCard(
+                              content: snapshot.data![index], index: index);
                         },
                       );
                     } else if (snapshot.hasError) {
@@ -156,8 +159,10 @@ class _HomePageState extends State<HomePage> {
 
 class ContentCard extends StatefulWidget {
   final Content content;
+  final int index;
 
-  const ContentCard({Key? key, required this.content}) : super(key: key);
+  const ContentCard({Key? key, required this.content, required this.index})
+      : super(key: key);
 
   @override
   _ContentCardState createState() => _ContentCardState();
@@ -174,6 +179,20 @@ class _ContentCardState extends State<ContentCard> {
     super.dispose();
   }
 
+  void _navigateToCardView() {
+    if (widget.index == 0) {
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => GuidedPracticePage()),
+      );
+    } else if (widget.index == 1) {
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => GuidedPracticePage2()),
+      );
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -184,6 +203,7 @@ class _ContentCardState extends State<ContentCard> {
             setState(() {
               isSelected = false;
             });
+            _navigateToCardView();
           });
         });
       },
