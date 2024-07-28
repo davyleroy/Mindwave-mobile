@@ -1,9 +1,11 @@
+// ignore_for_file: unused_import
+
 import 'package:flutter/material.dart';
 import 'dart:async';
 import 'auth_service.dart';
-import 'main.dart';
-import 'gender.dart';
-// Import the file containing the HomePage
+import '../main.dart';
+import 'setup/gender.dart';
+import 'help_selection_page.dart'; // Import the file containing the HomePage
 
 void main() {
   runApp(MyApp());
@@ -218,7 +220,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => GenderSelectionPage()),
+                            builder: (context) => ChooseGenderScreen()),
                       ); // Show an error message or handle the case when sign-up fails
                     }
                   },
@@ -233,9 +235,3 @@ class _LoginScreenState extends State<LoginScreen> {
 }
 
 final authService = AuthService();
- //In the above code, we have created a splash screen with a logo and app name. We have used the  Timer  class to navigate to the login screen after 3 seconds. 
- //Conclusion 
- //In this article, we have learned how to create a splash screen in Flutter. We have also seen how to navigate to another screen after a certain time. 
- //I hope this article was helpful to you. 
- //Happy coding! 
- //Peer Review Contributions by:  Saiharsha Balasubramaniam
