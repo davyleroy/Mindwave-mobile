@@ -6,8 +6,14 @@ import 'widgets/auth_service.dart';
 import 'widgets/spalashscreen.dart';
 import 'widgets/setup/Card_view1.dart';
 import 'widgets/setup/Card_view2.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   runApp(MyApp());
 }
 
