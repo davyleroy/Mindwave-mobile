@@ -3,7 +3,7 @@ import 'dart:async';
 import 'auth_service.dart';
 import 'main.dart';
 import 'gender.dart';
-import 'help_selection_page.dart'; // Import the file containing the HomePage
+// Import the file containing the HomePage
 
 void main() {
   runApp(MyApp());
