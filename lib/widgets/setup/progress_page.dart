@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'view_1extension.dart';
 
 class ProgressPage extends StatelessWidget {
+  const ProgressPage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -11,7 +12,7 @@ class ProgressPage extends StatelessWidget {
           icon: Icon(Icons.arrow_back, color: Colors.black),
           onPressed: () => Navigator.of(context).pop(),
         ),
-        title: Text('Your Progress', style: TextStyle(color: Colors.black)),
+        title: Text('Streaks🔥', style: TextStyle(color: Colors.black)),
         backgroundColor: Colors.transparent,
         elevation: 0,
       ),
@@ -42,7 +43,7 @@ class ProgressPage extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
             Text(
-              'In Progress',
+              '5 Days',
               style: TextStyle(
                   fontSize: 48,
                   fontWeight: FontWeight.bold,

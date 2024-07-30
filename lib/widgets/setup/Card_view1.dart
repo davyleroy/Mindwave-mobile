@@ -1,5 +1,38 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/material.dart'
+    show
+        BorderRadius,
+        BoxFit,
+        BuildContext,
+        Colors,
+        Column,
+        CrossAxisAlignment,
+        EdgeInsets,
+        ElevatedButton,
+        Expanded,
+        FontWeight,
+        Icon,
+        IconButton,
+        IconData,
+        Icons,
+        Image,
+        MainAxisAlignment,
+        MaterialPageRoute,
+        Navigator,
+        Padding,
+        RoundedRectangleBorder,
+        Row,
+        SafeArea,
+        Scaffold,
+        SingleChildScrollView,
+        Size,
+        SizedBox,
+        StatelessWidget,
+        Text,
+        TextStyle,
+        Widget;
+// ignore: unused_import
 import 'view_1extension.dart';
+import '../../main.dart';
 
 class GuidedPracticePage extends StatelessWidget {
   @override
@@ -20,19 +53,19 @@ class GuidedPracticePage extends StatelessWidget {
                     fit: BoxFit.cover,
                   ),
                   Padding(
-                    padding: EdgeInsets.all(16),
+                    padding: const EdgeInsets.all(16),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(
+                        const Text(
                           'Abundance Guided Practice',
                           style: TextStyle(
                             fontSize: 24,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
-                        SizedBox(height: 8),
-                        Row(
+                        const SizedBox(height: 8),
+                        const Row(
                           children: [
                             Icon(Icons.star, color: Colors.yellow, size: 20),
                             SizedBox(width: 4),
@@ -42,31 +75,31 @@ class GuidedPracticePage extends StatelessWidget {
                                 style: TextStyle(color: Colors.grey)),
                           ],
                         ),
-                        SizedBox(height: 16),
+                        const SizedBox(height: 16),
                         _buildInfoRow(
                             Icons.access_time, '30 mins, Intermediate'),
                         _buildInfoRow(
                             Icons.spa, 'Meditation, Breathing, sleep'),
                         _buildInfoRow(Icons.calendar_today, '10 Days'),
                         _buildInfoRow(Icons.music_note, 'Ambient'),
-                        SizedBox(height: 24),
+                        const SizedBox(height: 24),
                         ElevatedButton(
-                          child: Text('START'),
+                          child: const Text('START'),
                           style: ElevatedButton.styleFrom(
                             backgroundColor: Colors.indigo,
                             foregroundColor: Colors.white,
-                            minimumSize: Size(double.infinity, 50),
+                            minimumSize: const Size(double.infinity, 50),
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(25),
                             ),
                           ),
-                          onPressed: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => GuidedPracticePage()),
-                            );
-                          },
+
+                          /// Navigates to the GuidedPracticePage when the button is pressed.
+                          onPressed: () => Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const viewcardPage()),
+                          ),
                         ),
                       ],
                     ),
@@ -83,18 +116,22 @@ class GuidedPracticePage extends StatelessWidget {
   Widget _buildHeader(BuildContext context) {
     return SafeArea(
       child: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             IconButton(
-              icon: Icon(Icons.arrow_back),
-              onPressed: () => Navigator.pop(context),
+              icon: const Icon(Icons.arrow_back),
+              onPressed: () {
+                Navigator.pushReplacement(context,
+                    MaterialPageRoute(builder: (context) => HomePage()));
+              },
             ),
             Row(
               children: [
-                IconButton(icon: Icon(Icons.bookmark_border), onPressed: () {}),
-                IconButton(icon: Icon(Icons.share), onPressed: () {}),
+                IconButton(
+                    icon: const Icon(Icons.bookmark_border), onPressed: () {}),
+                IconButton(icon: const Icon(Icons.share), onPressed: () {}),
               ],
             ),
           ],
@@ -105,12 +142,12 @@ class GuidedPracticePage extends StatelessWidget {
 
   Widget _buildInfoRow(IconData icon, String text) {
     return Padding(
-      padding: EdgeInsets.symmetric(vertical: 8),
+      padding: const EdgeInsets.symmetric(vertical: 8),
       child: Row(
         children: [
           Icon(icon, size: 20, color: Colors.grey),
-          SizedBox(width: 12),
-          Text(text, style: TextStyle(fontSize: 16)),
+          const SizedBox(width: 12),
+          Text(text, style: const TextStyle(fontSize: 16)),
         ],
       ),
     );

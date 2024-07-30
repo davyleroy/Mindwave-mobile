@@ -21,6 +21,7 @@ flutter:
   uses-material-design: true
   assets:
     - assets/avatar.png
+    - assets/avatar1.png
     - assets/nature.jpg
     - assets/nature2.png
     - assets/insight.png
@@ -32,3 +33,4 @@ flutter:
     - assets/plant.jpg
     - assets/bulb.jpg
     - assets/sunset.jpg
+    - assets/google_logo.png

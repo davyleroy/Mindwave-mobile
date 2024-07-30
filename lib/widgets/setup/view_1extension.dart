@@ -1,8 +1,13 @@
-import 'package:flutter/material.dart';
-import 'Card_view1.dart';
-import 'progress_page.dart';
+// ignore_for_file: camel_case_types
 
-class GuidedPracticePage extends StatelessWidget {
+import 'package:flutter/material.dart';
+import 'progress_page.dart' show ProgressPage;
+import 'card_view1.dart';
+import 'package:flutter/services.dart';
+
+class viewcardPage extends StatelessWidget {
+  const viewcardPage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -15,7 +20,7 @@ class GuidedPracticePage extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Image.asset(
-                    'assets/nature.png',
+                    'assets/nature.jpg',
                     width: double.infinity,
                     height: 300,
                     fit: BoxFit.cover,
@@ -45,7 +50,7 @@ class GuidedPracticePage extends StatelessWidget {
                         ),
                         SizedBox(height: 24),
                         Text(
-                          '30 mins, Intermediate',
+                          'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
                           style: TextStyle(fontSize: 16),
                         ),
                         SizedBox(height: 24),
@@ -60,7 +65,7 @@ class GuidedPracticePage extends StatelessWidget {
                         ElevatedButton(
                           child: Text('Show Progress ...'),
                           style: ElevatedButton.styleFrom(
-                            backgroundColor: Color(0xFF5C6BC0),
+                            backgroundColor: Color.fromARGB(255, 249, 250, 252),
                             minimumSize: Size(double.infinity, 50),
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(25),
@@ -70,7 +75,7 @@ class GuidedPracticePage extends StatelessWidget {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => ProgressPage(),
+                                builder: (context) => const ProgressPage(),
                               ),
                             );
                           },
@@ -97,7 +102,7 @@ class GuidedPracticePage extends StatelessWidget {
             IconButton(
               icon: Icon(Icons.arrow_back),
               onPressed: () => Navigator.pop(context),
-            ),
+            ), //back button   //IconButton(icon: Icon(Icons.menu), onPressed: () {}),
             Row(
               children: [
                 IconButton(icon: Icon(Icons.bookmark_border), onPressed: () {}),

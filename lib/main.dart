@@ -8,6 +8,7 @@ import 'widgets/setup/Card_view1.dart';
 import 'widgets/setup/Card_view2.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
+import 'widgets/setup/profile_page.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -68,8 +69,18 @@ class _HomePageState extends State<HomePage> {
                         ),
                       ],
                     ),
-                    CircleAvatar(
-                      backgroundImage: AssetImage('assets/avatar.png'),
+                    InkWell(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => ProfilePage(),
+                          ),
+                        );
+                      },
+                      child: CircleAvatar(
+                        backgroundImage: AssetImage('assets/avatar.png'),
+                      ),
                     ),
                   ],
                 ),
