@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/widgets/setup/next_button.dart';
+import 'package:flutter_application_1/widgets/home_page.dart';
+
 
 class FeelingScreen extends StatelessWidget {
   @override
@@ -35,7 +36,21 @@ class FeelingScreen extends StatelessWidget {
             ],
           ),
           SizedBox(height: 40),
-          NextButton(),
+           ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => HomePage(),
+                  ),
+                );
+              },
+            child: Icon(Icons.arrow_forward),
+            style: ElevatedButton.styleFrom(
+              shape: CircleBorder(),
+              padding: EdgeInsets.all(20),
+            ),
+          ),
         ],
       ),
     );

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/widgets/setup/next_button.dart';
+import 'package:flutter_application_1/widgets/setup/feeling_screen.dart';
 
 class SleepHoursScreen extends StatefulWidget {
   @override
@@ -45,7 +45,21 @@ class _SleepHoursScreenState extends State<SleepHoursScreen> {
           ),
           Text('${_sleepHours.round()} hours', style: TextStyle(fontSize: 18)),
           SizedBox(height: 40),
-          NextButton(),
+         ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => FeelingScreen(),
+                  ),
+                );
+              },
+            child: Icon(Icons.arrow_forward),
+            style: ElevatedButton.styleFrom(
+              shape: CircleBorder(),
+              padding: EdgeInsets.all(20),
+            ),
+          ),
         ],
       ),
     );
