@@ -1,11 +1,13 @@
 // ignore_for_file: unused_import
 
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/widgets/create_account_screen.dart';
 import 'dart:async';
 import 'auth_service.dart';
 import '../main.dart';
 import 'setup/gender.dart';
-import 'help_selection_page.dart'; // Import the file containing the HomePage
+import 'help_selection_page.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 void main() {
   runApp(MyApp());
@@ -263,17 +265,34 @@ class _LoginScreenState extends State<LoginScreen> {
                     if (isSignedUp) {
                       Navigator.pushReplacement(
                         context,
-                        MaterialPageRoute(builder: (context) => HomePage()),
+                        MaterialPageRoute(builder: (context) => SignupScreen()),
                       );
                     } else {
                       Text('Wrong password or SIGN UP');
                       Navigator.push(
+                        // ignore: use_build_context_synchronously
                         context,
                         MaterialPageRoute(
                             builder: (context) => ChooseGenderScreen()),
-                      ); // Show an error message or handle the case when sign-up fails
+                      );
                     }
                   },
+                ),
+                SizedBox(height: 16),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    Text("Not registered yet? "),
+                    TextButton(
+                      child: Text('Signup'),
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => SignupScreen()),
+                        );
+                      },
+                    ),
+                  ],
                 ),
               ],
             ),

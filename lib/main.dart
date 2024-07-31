@@ -2,19 +2,11 @@
 
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/widgets/splash_screen.dart';
 import 'widgets/auth_service.dart';
-import 'widgets/spalashscreen.dart';
-import 'widgets/setup/Card_view1.dart';
-import 'widgets/setup/Card_view2.dart';
-import 'package:firebase_core/firebase_core.dart';
-import 'firebase_options.dart';
-import 'widgets/setup/profile_page.dart';
 
-Future<void> main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform,
-  );
+
+void main() {
   runApp(MyApp());
 }
 
@@ -69,18 +61,8 @@ class _HomePageState extends State<HomePage> {
                         ),
                       ],
                     ),
-                    InkWell(
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => ProfilePage(),
-                          ),
-                        );
-                      },
-                      child: CircleAvatar(
-                        backgroundImage: AssetImage('assets/avatar.png'),
-                      ),
+                    CircleAvatar(
+                      backgroundImage: AssetImage('assets/avatar.png'),
                     ),
                   ],
                 ),
@@ -121,8 +103,7 @@ class _HomePageState extends State<HomePage> {
                         physics: NeverScrollableScrollPhysics(),
                         itemCount: snapshot.data!.length,
                         itemBuilder: (context, index) {
-                          return ContentCard(
-                              content: snapshot.data![index], index: index);
+                          return ContentCard(content: snapshot.data![index]);
                         },
                       );
                     } else if (snapshot.hasError) {
@@ -176,10 +157,8 @@ class _HomePageState extends State<HomePage> {
 
 class ContentCard extends StatefulWidget {
   final Content content;
-  final int index;
 
-  const ContentCard({Key? key, required this.content, required this.index})
-      : super(key: key);
+  const ContentCard({Key? key, required this.content}) : super(key: key);
 
   @override
   _ContentCardState createState() => _ContentCardState();
@@ -196,20 +175,6 @@ class _ContentCardState extends State<ContentCard> {
     super.dispose();
   }
 
-  void _navigateToCardView() {
-    if (widget.index == 0) {
-      Navigator.push(
-        context,
-        MaterialPageRoute(builder: (context) => GuidedPracticePage()),
-      );
-    } else if (widget.index == 1) {
-      Navigator.push(
-        context,
-        MaterialPageRoute(builder: (context) => GuidedPracticePage2()),
-      );
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -220,7 +185,6 @@ class _ContentCardState extends State<ContentCard> {
             setState(() {
               isSelected = false;
             });
-            _navigateToCardView();
           });
         });
       },
