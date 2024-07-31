@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter_application_1/widgets/setup/sleep_screen.dart';
@@ -21,7 +23,7 @@ class _HelpSelectionScreenState extends State<HelpSelectionScreen> {
         title: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Image.asset('assets/mindwave_logo.png', height: 24), // Replace with your logo
+            Image.asset('assets/Home-logob.png', height: 24), // Replace with your logo
             SizedBox(width: 8),
             Text('Mindwave', style: TextStyle(color: Colors.black)),
           ],
@@ -67,7 +69,7 @@ class _HelpSelectionScreenState extends State<HelpSelectionScreen> {
                               width: 100,
                               height: 150,
                               decoration: BoxDecoration(
-                                color: isSelected ? Color(0xFF4A5AAB) : Colors.grey[200],
+                                color: isSelected ?  Color.fromARGB(255, 2, 57, 153) : Colors.grey[200],
                                 borderRadius: BorderRadius.circular(20),
                               ),
                               child: Center(
@@ -108,7 +110,7 @@ class _HelpSelectionScreenState extends State<HelpSelectionScreen> {
                   style: ElevatedButton.styleFrom(
                     shape: CircleBorder(),
                     padding: EdgeInsets.all(20),
-                    backgroundColor: Color(0xFF4A5AAB),
+                    backgroundColor: Color.fromARGB(255, 2, 57, 153),
                     foregroundColor: Colors.white,
                   ),
                 ),
@@ -118,7 +120,7 @@ class _HelpSelectionScreenState extends State<HelpSelectionScreen> {
                   children: [
                     Container(width: 20, height: 4, color: Colors.grey[300]),
                     SizedBox(width: 4),
-                    Container(width: 20, height: 4, color: Color(0xFF4A5AAB)),
+                    Container(width: 20, height: 4, color: Color.fromARGB(255, 2, 57, 153)),
                     SizedBox(width: 4),
                     Container(width: 20, height: 4, color: Colors.grey[300]),
                     SizedBox(width: 4),

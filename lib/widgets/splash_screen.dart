@@ -2,7 +2,6 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/widgets/create_account_screen.dart';
-import 'package:flutter_application_1/widgets/home_page.dart';
 import 'dart:async';
 import 'auth_service.dart';
 import '../main.dart';
@@ -184,11 +183,12 @@ class _LoginScreenState extends State<LoginScreen> {
                 ElevatedButton(
                   child: Text(
                     'SIGN IN',
-                    style: TextStyle(color: Colors.white),
+                    style: TextStyle(color: Colors.white, fontSize: 18),
                   ),
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Color.fromARGB(255, 2, 57, 153),
-                    minimumSize: Size(double.infinity, 50),
+                    minimumSize: Size(double.infinity, 60),
+                    padding: EdgeInsets.symmetric(vertical: 16),
                   ),
                   onPressed: () async {
                     final email = _emailController.text;
@@ -205,9 +205,58 @@ class _LoginScreenState extends State<LoginScreen> {
                     }
                   },
                 ),
-                SizedBox(height: 16),
+                SizedBox(height: 24),
+                Row(
+                  children: [
+                    Expanded(
+                      child: Divider(
+                        color: Colors.grey,
+                        thickness: 1,
+                      ),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 8),
+                      child: Text(
+                        'or',
+                        style: TextStyle(color: Colors.grey),
+                      ),
+                    ),
+                    Expanded(
+                      child: Divider(
+                        color: Colors.grey,
+                        thickness: 1,
+                      ),
+                    ),
+                  ],
+                ),
+                SizedBox(height: 24),
                 ElevatedButton(
-                  child: Text('SIGN UP'),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      SizedBox(width: 10),
+                      Flexible(
+                        child: Text(
+                          'SIGN UP WITH  ',
+                          style: TextStyle(
+                            color: Color.fromARGB(255, 2, 57, 153),
+                            fontSize: 18,
+                          ),
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                      ),
+                      Image.asset(
+                        'assets/google_logo.png',
+                        height: 24,
+                        width: 24,
+                      ),
+                    ],
+                  ),
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.grey[200],
+                    minimumSize: Size(double.infinity, 60),
+                    padding: EdgeInsets.symmetric(vertical: 16),
+                  ),
                   onPressed: () async {
                     final email = _emailController.text;
                     final password = _passwordController.text;
@@ -220,15 +269,6 @@ class _LoginScreenState extends State<LoginScreen> {
                       );
                     } else {
                       Text('Wrong password or SIGN UP');
-                      Fluttertoast.showToast(
-                        msg: "Wrong password redirecting to SIGN UP",
-                        toastLength: Toast.LENGTH_SHORT,
-                        gravity: ToastGravity.CENTER,
-                        timeInSecForIosWeb: 1,
-                        backgroundColor: Colors.red,
-                        textColor: Colors.white,
-                        fontSize: 16.0,
-                        );
                       Navigator.push(
                         // ignore: use_build_context_synchronously
                         context,
@@ -237,6 +277,22 @@ class _LoginScreenState extends State<LoginScreen> {
                       );
                     }
                   },
+                ),
+                SizedBox(height: 16),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    Text("Not registered yet? "),
+                    TextButton(
+                      child: Text('Signup'),
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => SignupScreen()),
+                        );
+                      },
+                    ),
+                  ],
                 ),
               ],
             ),

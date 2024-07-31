@@ -23,12 +23,13 @@ class _ChooseGenderScreenState extends State<ChooseGenderScreen> {
         backgroundColor: Colors.white,
         elevation: 0,
         centerTitle: true,
-        title: Text(
-          'Mindwave',
-          style: TextStyle(
-            color: Colors.black,
-            fontWeight: FontWeight.bold,
-          ),
+        title: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Image.asset('assets/Home-logob.png', height: 24), // Replace with your logo
+            SizedBox(width: 8),
+            Text('Mindwave', style: TextStyle(color: Colors.black)),
+          ],
         ),
         leading: IconButton(
           icon: Icon(Icons.arrow_back, color: Colors.black),
@@ -86,28 +87,18 @@ class _ChooseGenderScreenState extends State<ChooseGenderScreen> {
             ),
           ),
             SizedBox(height: 20),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Container(
-                  width: 50,
-                  height: 5,
-                  color: Colors.blue,
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Container(width: 20, height: 4, color: Color.fromARGB(255, 2, 57, 153)),
+                    SizedBox(width: 4),
+                    Container(width: 20, height: 4, color:Colors.grey[300]),
+                    SizedBox(width: 4),
+                    Container(width: 20, height: 4, color: Colors.grey[300]),
+                    SizedBox(width: 4),
+                    Container(width: 20, height: 4, color: Colors.grey[300]),
+                  ],
                 ),
-                SizedBox(width: 5),
-                Container(
-                  width: 50,
-                  height: 5,
-                  color: Colors.grey[300],
-                ),
-                SizedBox(width: 5),
-                Container(
-                  width: 50,
-                  height: 5,
-                  color: Colors.grey[300],
-                ),
-              ],
-            ),
             SizedBox(height: 20),
           ],
         ),
@@ -137,7 +128,7 @@ class GenderCard extends StatelessWidget {
         width: 120,
         height: 150,
         decoration: BoxDecoration(
-          color: isSelected ? Colors.blue : Colors.grey[200],
+          color: isSelected ? Color.fromARGB(255, 2, 57, 153): Colors.grey[200],
           borderRadius: BorderRadius.circular(10),
         ),
         child: Column(

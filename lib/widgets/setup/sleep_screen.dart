@@ -13,7 +13,14 @@ class _SleepHoursScreenState extends State<SleepHoursScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Mindwave'),
+        title: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Image.asset('assets/Home-logob.png', height: 24), // Replace with your logo
+            SizedBox(width: 8),
+            Text('Mindwave', style: TextStyle(color: Colors.black)),
+          ],
+        ),
         centerTitle: true,
         leading: IconButton(
           icon: Icon(Icons.arrow_back),
@@ -33,9 +40,9 @@ class _SleepHoursScreenState extends State<SleepHoursScreen> {
           SizedBox(height: 20),
           Slider(
             value: _sleepHours,
-            min: 6,
-            max: 10,
-            divisions: 4,
+            min: 0,
+            max: 24,
+            divisions: 24,
             label: _sleepHours.round().toString(),
             onChanged: (double value) {
               setState(() {
@@ -60,6 +67,19 @@ class _SleepHoursScreenState extends State<SleepHoursScreen> {
               padding: EdgeInsets.all(20),
             ),
           ),
+          SizedBox(height: 20),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Container(width: 20, height: 4, color: Colors.grey[300]),
+                    SizedBox(width: 4),
+                    Container(width: 20, height: 4, color:Colors.grey[300] ),
+                    SizedBox(width: 4),
+                    Container(width: 20, height: 4, color: Color.fromARGB(255, 2, 57, 153)),
+                    SizedBox(width: 4),
+                    Container(width: 20, height: 4, color: Colors.grey[300]),
+                  ],
+            ),
         ],
       ),
     );

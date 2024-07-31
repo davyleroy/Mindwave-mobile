@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/widgets/home_page.dart';
+import 'package:flutter_application_1/main.dart';
+
 
 
 class FeelingScreen extends StatelessWidget {
@@ -7,7 +8,14 @@ class FeelingScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Mindwave'),
+        title: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Image.asset('assets/Home-logob.png', height: 24), // Replace with your logo
+            SizedBox(width: 8),
+            Text('Mindwave', style: TextStyle(color: Colors.black)),
+          ],
+        ),
         centerTitle: true,
         leading: IconButton(
           icon: Icon(Icons.arrow_back),
@@ -51,6 +59,19 @@ class FeelingScreen extends StatelessWidget {
               padding: EdgeInsets.all(20),
             ),
           ),
+          SizedBox(height: 20),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Container(width: 20, height: 4, color: Colors.grey[300]),
+                    SizedBox(width: 4),
+                    Container(width: 20, height: 4, color:Colors.grey[300] ),
+                    SizedBox(width: 4),
+                    Container(width: 20, height: 4, color: Colors.grey[300]),
+                    SizedBox(width: 4),
+                    Container(width: 20, height: 4, color: Color.fromARGB(255, 2, 57, 153)),
+                  ],
+                ),
         ],
       ),
     );
@@ -67,7 +88,7 @@ class FeelingEmoji extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Icon(icon, size: 50, color: Colors.blueAccent),
+        Icon(icon, size: 50,  color: Color.fromARGB(255, 2, 57, 153)),
         SizedBox(height: 10),
         Text(label, style: TextStyle(fontSize: 16)),
       ],
