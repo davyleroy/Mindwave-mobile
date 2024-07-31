@@ -1,48 +1,86 @@
 // auth_service.dart
+import "package:firebase_auth/firebase_auth.dart";
+import 'package:google_sign_in/google_sign_in.dart';
+
 class AuthService {
   static final AuthService _instance = AuthService._internal();
   factory AuthService() => _instance;
   AuthService._internal();
 
-  // Dummy data for demonstration purposes
-  final _users = [
-    User(email: 'michael@gmail.com', password: 'Password'),
-  ];
+  final FirebaseAuth _auth = FirebaseAuth.instance;
+  final GoogleSignIn _googleSignIn = GoogleSignIn();
 
-  User? _currentUser;
+  User? get currentUser => _auth.currentUser;
 
-  User? get currentUser => _currentUser;
+  Stream<User?> get authStateChanges => _auth.authStateChanges();
 
-  Future<bool> signIn(String email, String password) async {
-    final user = _users.firstWhere(
-      (user) => user.email == email && user.password == password,
-      orElse: () => User(email: '', password: ''),
-    );
-
-    if (user.email.isNotEmpty) {
-      _currentUser = user;
-      return true;
+  Future<UserCredential?> signIn(String email, String password) async {
+    try {
+      final UserCredential userCredential =
+          await _auth.signInWithEmailAndPassword(
+        email: email,
+        password: password,
+      );
+      return userCredential;
+    } on FirebaseAuthException catch (e) {
+      print('Failed to sign in: ${e.message}');
+      return null;
     }
-    return false;
   }
 
-  Future<bool> signUp(String email, String password) async {
-    if (!_users.any((user) => user.email == email)) {
-      _users.add(User(email: email, password: password));
-      _currentUser = User(email: email, password: password);
-      return true;
+  Future<UserCredential?> signUp(String email, String password) async {
+    try {
+      final UserCredential userCredential =
+          await _auth.createUserWithEmailAndPassword(
+        email: email,
+        password: password,
+      );
+      return userCredential;
+    } on FirebaseAuthException catch (e) {
+      print('Failed to sign up: ${e.message}');
+      return null;
     }
-    return false;
   }
 
-  void signOut() {
-    _currentUser = null;
+  Future<UserCredential?> signInWithGoogle() async {
+    try {
+      final GoogleSignInAccount? googleUser = await _googleSignIn.signIn();
+      if (googleUser == null) return null;
+
+      final GoogleSignInAuthentication googleAuth =
+          await googleUser.authentication;
+      final OAuthCredential credential = GoogleAuthProvider.credential(
+        accessToken: googleAuth.accessToken,
+        idToken: googleAuth.idToken,
+      );
+
+      return await _auth.signInWithCredential(credential);
+    } catch (e) {
+      print('Failed to sign in with Google: $e');
+      return null;
+    }
   }
-}
 
-class User {
-  final String email;
-  final String password;
+  Future<UserCredential?> signUpWithGoogle() async {
+    try {
+      final UserCredential? userCredential = await signInWithGoogle();
+      if (userCredential != null &&
+          userCredential.additionalUserInfo!.isNewUser) {
+        // This is a new user, you can perform additional setup if needed
+        return userCredential;
+      } else {
+        // User already exists
+        await signOut();
+        return null;
+      }
+    } catch (e) {
+      print('Failed to sign up with Google: $e');
+      return null;
+    }
+  }
 
-  User({required this.email, required this.password});
+  Future<void> signOut() async {
+    await _googleSignIn.signOut();
+    await _auth.signOut();
+  }
 }

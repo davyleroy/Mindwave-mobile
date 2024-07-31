@@ -12,7 +12,12 @@
           "package_name": "com.example.flutter_application_1"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "36307055178-6v3oph7i6hf5gmi1ad7od3p0u33e7gng.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyBW_rTFpaHt7DowDsoj3z48RHOvKOAz__A"
@@ -20,7 +25,19 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "36307055178-6v3oph7i6hf5gmi1ad7od3p0u33e7gng.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "36307055178-vvtc2h1ms9c5ojrc8pj8jkk6nkk1i5m4.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.flutterApplication1"
+              }
+            }
+          ]
         }
       }
     },
@@ -31,7 +48,12 @@
           "package_name": "com.mindwave.app"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "36307055178-6v3oph7i6hf5gmi1ad7od3p0u33e7gng.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyBW_rTFpaHt7DowDsoj3z48RHOvKOAz__A"
@@ -39,7 +61,19 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "36307055178-6v3oph7i6hf5gmi1ad7od3p0u33e7gng.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "36307055178-vvtc2h1ms9c5ojrc8pj8jkk6nkk1i5m4.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.flutterApplication1"
+              }
+            }
+          ]
         }
       }
     }
