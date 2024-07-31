@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/main.dart';
+import 'package:flutter_application_1/widgets/setup/feeling_screen.dart';
 
+class SleepHoursScreen extends StatefulWidget {
+  @override
+  _SleepHoursScreenState createState() => _SleepHoursScreenState();
+}
 
+class _SleepHoursScreenState extends State<SleepHoursScreen> {
+  double _sleepHours = 8;
 
-class FeelingScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -31,25 +36,28 @@ class FeelingScreen extends StatelessWidget {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Text('How are you feeling?', style: TextStyle(fontSize: 24)),
+          Text('How many hours do you sleep?', style: TextStyle(fontSize: 24)),
           SizedBox(height: 20),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              FeelingEmoji('Happy', Icons.sentiment_very_satisfied),
-              SizedBox(width: 20),
-              FeelingEmoji('Neutral', Icons.sentiment_neutral),
-              SizedBox(width: 20),
-              FeelingEmoji('Sad', Icons.sentiment_dissatisfied),
-            ],
+          Slider(
+            value: _sleepHours,
+            min: 0,
+            max: 24,
+            divisions: 24,
+            label: _sleepHours.round().toString(),
+            onChanged: (double value) {
+              setState(() {
+                _sleepHours = value;
+              });
+            },
           ),
+          Text('${_sleepHours.round()} hours', style: TextStyle(fontSize: 18)),
           SizedBox(height: 40),
-           ElevatedButton(
+         ElevatedButton(
               onPressed: () {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => HomePage(),
+                    builder: (context) => FeelingScreen(),
                   ),
                 );
               },
@@ -67,31 +75,13 @@ class FeelingScreen extends StatelessWidget {
                     SizedBox(width: 4),
                     Container(width: 20, height: 4, color:Colors.grey[300] ),
                     SizedBox(width: 4),
-                    Container(width: 20, height: 4, color: Colors.grey[300]),
-                    SizedBox(width: 4),
                     Container(width: 20, height: 4, color: Color.fromARGB(255, 2, 57, 153)),
+                    SizedBox(width: 4),
+                    Container(width: 20, height: 4, color: Colors.grey[300]),
                   ],
-                ),
+            ),
         ],
       ),
-    );
-  }
-}
-
-class FeelingEmoji extends StatelessWidget {
-  final String label;
-  final IconData icon;
-
-  FeelingEmoji(this.label, this.icon);
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Icon(icon, size: 50,  color: Color.fromARGB(255, 2, 57, 153)),
-        SizedBox(height: 10),
-        Text(label, style: TextStyle(fontSize: 16)),
-      ],
     );
   }
 }

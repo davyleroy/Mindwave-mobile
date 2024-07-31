@@ -1,20 +1,15 @@
 // ignore_for_file: unused_import
 
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/firebase_options.dart';
+import 'package:flutter_application_1/widgets/create_account_screen.dart';
 import 'dart:async';
 import 'auth_service.dart';
 import '../main.dart';
-import 'setup/Signup_Screen.dart';
-import 'package:firebase_core/firebase_core.dart';
+import 'setup/gender.dart';
+import 'help_selection_page.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
-import 'help_selection_page.dart'; // Import the file containing the HomePage
-
-void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform,
-  );
+void main() {
   runApp(MyApp());
 }
 
@@ -198,19 +193,15 @@ class _LoginScreenState extends State<LoginScreen> {
                   onPressed: () async {
                     final email = _emailController.text;
                     final password = _passwordController.text;
-                    final userCredential =
+                    final isSignedIn =
                         await authService.signIn(email, password);
-                    if (userCredential != null) {
+                    if (isSignedIn != null) {
                       Navigator.pushReplacement(
                         context,
                         MaterialPageRoute(builder: (context) => HomePage()),
                       );
                     } else {
                       // Show an error message or handle the case when sign-in fails
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        SnackBar(
-                            content: Text('Sign in failed. Please try again.')),
-                      );
                     }
                   },
                 ),
@@ -267,19 +258,42 @@ class _LoginScreenState extends State<LoginScreen> {
                     padding: EdgeInsets.symmetric(vertical: 16),
                   ),
                   onPressed: () async {
-                    final userCredential = await authService.signUpWithGoogle();
-                    if (userCredential != null) {
+                    final email = _emailController.text;
+                    final password = _passwordController.text;
+                    final isSignedUp =
+                        await authService.signUp(email, password);
+                    if (isSignedUp != null) {
                       Navigator.pushReplacement(
                         context,
                         MaterialPageRoute(builder: (context) => SignupScreen()),
                       );
                     } else {
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        SnackBar(
-                            content: Text('Sign up failed. Please try again.')),
+                      Text('Wrong password or SIGN UP');
+                      Navigator.push(
+                        // ignore: use_build_context_synchronously
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => ChooseGenderScreen()),
                       );
                     }
                   },
+                ),
+                SizedBox(height: 16),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    Text("Not registered yet? "),
+                    TextButton(
+                      child: Text('Signup'),
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => SignupScreen()),
+                        );
+                      },
+                    ),
+                  ],
                 ),
               ],
             ),
