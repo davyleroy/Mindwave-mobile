@@ -5,8 +5,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_1/widgets/splash_screen.dart';
 import 'widgets/auth_service.dart';
 
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
 
-void main() {
   runApp(MyApp());
 }
 
@@ -25,8 +29,6 @@ class HomePage extends StatefulWidget {
   @override
   _HomePageState createState() => _HomePageState();
 }
-
-
 
 class _HomePageState extends State<HomePage> {
   String selectedMood = '😄';

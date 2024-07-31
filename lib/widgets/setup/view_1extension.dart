@@ -2,7 +2,8 @@
 
 import 'package:flutter/material.dart';
 import 'progress_page.dart' show ProgressPage;
-import 'card_view1.dart';
+// ignore: unused_import
+import "card_view1.dart";
 import 'package:flutter/services.dart';
 
 class viewcardPage extends StatelessWidget {
