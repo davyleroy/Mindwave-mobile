@@ -13,6 +13,9 @@ class AuthService {
   User? get currentUser => _auth.currentUser;
 
   Stream<User?> get authStateChanges => _auth.authStateChanges();
+  Future<bool> isUserSignedIn() async {
+    return _auth.currentUser != null;
+  }
 
   Future<UserCredential?> signIn(String email, String password) async {
     try {

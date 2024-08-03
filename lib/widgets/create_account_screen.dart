@@ -1,6 +1,10 @@
+// ignore_for_file: unused_import
+
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/widgets/setup/gender.dart';
 import 'package:flutter_application_1/widgets/splash_screen.dart';
+import 'auth_service.dart';
 
 // import 'auth_service.dart';
 
@@ -12,6 +16,7 @@ class SignupScreen extends StatefulWidget {
 class _SignupScreenState extends State<SignupScreen> {
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
+  final _confirmPasswordController = TextEditingController();
 
   @override
   void dispose() {
@@ -63,18 +68,17 @@ class _SignupScreenState extends State<SignupScreen> {
                     border: OutlineInputBorder(borderSide: BorderSide.none),
                   ),
                 ),
-              SizedBox(height: 16),
-              TextField(
-                controller: _passwordController,
-                obscureText: true,
-                decoration: InputDecoration(
-                  filled: true,
-                  fillColor: Colors.grey[200],
-                  hintText: 'CONFIRM PASSWORD',
-                  suffixIcon: Icon(Icons.visibility_off),
-                  border: OutlineInputBorder(borderSide: BorderSide.none),
-                )
-              ),
+                SizedBox(height: 16),
+                TextField(
+                    controller: _passwordController,
+                    obscureText: true,
+                    decoration: InputDecoration(
+                      filled: true,
+                      fillColor: Colors.grey[200],
+                      hintText: 'CONFIRM PASSWORD',
+                      suffixIcon: Icon(Icons.visibility_off),
+                      border: OutlineInputBorder(borderSide: BorderSide.none),
+                    )),
                 SizedBox(height: 24),
                 ElevatedButton(
                   child: Text(
@@ -88,25 +92,35 @@ class _SignupScreenState extends State<SignupScreen> {
                   onPressed: () async {
                     final email = _emailController.text;
                     final password = _passwordController.text;
-                    final isSignedUp = await authService.signUp(email, password);
-                    if (isSignedUp) {
+                    final confirmPassword = _confirmPasswordController.text;
+                    if (password != confirmPassword) {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(content: Text('Passwords do not match')),
+                      );
+                      return;
+                    }
+                    final User = await authService.signUp(email, password);
+                    if (User != null) {
                       Navigator.pushReplacement(
                         context,
-                        MaterialPageRoute(builder: (context) => ChooseGenderScreen()),
+                        MaterialPageRoute(
+                            builder: (context) => ChooseGenderScreen()),
                       );
                     } else {
-                      
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        const SnackBar(
+                            content: Text('Sign up failed. Please try again.')),
+                      );
                     }
                   },
                 ),
                 SizedBox(height: 16),
                 ElevatedButton(
                   child: Text('SIGN IN WITH PHONE NUMBER'),
-                  onPressed: () {
-                   
-                  },
+                  onPressed: () {},
                   style: ElevatedButton.styleFrom(
-                    foregroundColor: Colors.black, backgroundColor: Colors.grey[300],
+                    foregroundColor: Colors.black,
+                    backgroundColor: Colors.grey[300],
                     minimumSize: Size(double.infinity, 50),
                   ),
                 ),
@@ -120,7 +134,8 @@ class _SignupScreenState extends State<SignupScreen> {
                       onPressed: () {
                         Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (context) => LoginScreen()),
+                          MaterialPageRoute(
+                              builder: (context) => LoginScreen()),
                         );
                       },
                     ),
