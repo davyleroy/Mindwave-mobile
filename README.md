@@ -19,7 +19,7 @@ Mindwave mobile app was built using the following tech Stack
 
 To deploy this project locally on your computer you will need to first clone the github repo
 
-```bash
+```sh
 git clone https://github.com/davyleroy/Mindwave-mobile.git
 ```
 
@@ -30,13 +30,13 @@ cd Mindwave-mobile
 
 initialize flutter by installing all the necessary dependencies, flutter and android sdk should be installed on your local computer
 
-```bash
+```sh
 flutter pub get
 ```
 
 then you can run the flutter application and choose your favorite runtime environment
 
-```bash
+```sh
 flutter run
 ```
 
