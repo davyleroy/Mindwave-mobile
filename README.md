@@ -48,7 +48,7 @@ flutter run
 ## Using the apk file
 
 ***Step 1:***
-download the apk file [here](www.google.com)
+download the apk file [here](https://drive.google.com/file/d/1Jk7stdvuKSBx4CYMNzYiAwyM94U-Wtrl/view?usp=sharing)
 
 ***step 2:***
 click install on the install menu
@@ -70,7 +70,7 @@ Enjoy mindwave and be mindful
 - Find the video demo [here](https://drive.google.com/file/d/1xWw3Z3VqtbrvB6AnfX5dWLTiFW8Cm5_c/view?usp=sharing)
 - Presentation slides [here](https://docs.google.com/presentation/d/1juAV0NGGANiPid1BiYkSymvnXATFeddal-TmhMMLgtk/edit?usp=sharing)
 
-- Apk file [here]()
+- Apk file [here](https://drive.google.com/file/d/1Jk7stdvuKSBx4CYMNzYiAwyM94U-Wtrl/view?usp=sharing)
 
 
 ## License
